@@ -1,0 +1,19 @@
+name: Run Script on Push
+
+on:
+  push:
+    branches:
+      - main # Change to your default branch if it isn't main
+
+jobs:
+  execute-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x ./program.sh
+
+      - name: Run program.sh
+        run: ./program.sh "pushed_directory"
